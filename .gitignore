@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Model Files (Optional: keep them if you want them in the repo)
+# If models are large, use Git LFS.
+# phi_model.pkl
+# scaler_x.pkl
+# scaler_y.pkl
+
+# Data Files
+Engineering_Cost_Feasibility_Dataset.csv
+Engineering_Cost_Feasibility_Dataset.xlsx
+Processed_Engineering_Data.csv
+NTUSER.DAT*
+ntuser.dat*
+ntuser.ini
+*.pkl
