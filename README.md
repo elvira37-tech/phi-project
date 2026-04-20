@@ -1,27 +1,59 @@
-# Project Health Indicator (PHI) Assessment Suite
+# 🏗️ PHI - Project Health Index Suite
 
-This repository contains an AI-driven tool for assessing the feasibility and health of engineering projects based on cost, schedule, and risk factors.
+An AI-powered tool for project management and engineering feasibility analysis. This application uses a Neural Network (MLPRegressor) to predict project cost and schedule risks, providing a Project Health Index (PHI) based on Monte Carlo simulations.
 
-## Features
-- **AI-Powered Predictions:** Uses a neural network (MLPRegressor) to forecast project duration and cost.
-- **Monte Carlo Simulations:** Weights stage-specific risks and costs using statistical distributions.
-- **Project Health Index (PHI):** A consolidated metric for tracking project status (Feasible, Borderline, or Not Feasible).
-- **Multiple Interfaces:**
-  - **CLI Tool:** `phi_cli.py` for quick analysis.
-  - **Streamlit App:** `phi_tool.py` for a web interface.
-  - **Jupyter Notebook:** `PM_project.ipynb` for detailed research and model training.
+## 🚀 Features
+- **AI Forecasting:** Predicts final project cost and duration using historical data and stage-specific risk profiles.
+- **Dynamic PHI Dashboard:** Real-time health scoring based on Cost, Time, and Risk metrics.
+- **Monte Carlo Simulations:** Utilizes P90 confidence intervals for stage-specific distribution of resources.
+- **Multi-Stage Tracking:** Support for both predictive (planning) and tracking (execution) modes.
 
-## Installation
-```bash
-pip install -r requirements.txt
-```
+## 🛠️ Setup & Installation
 
-## Usage (CLI)
-```bash
-python phi_cli.py --area 1200 --complexity 2 --resources 85 --days 365
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/phi-project.git
+   cd phi-project
+   ```
 
-## Web Interface
-```bash
-streamlit run phi_tool.py
-```
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Train the model (Optional):**
+   If you want to retrain the model with the latest dataset:
+   ```bash
+   python train_model.py
+   ```
+
+4. **Run the Streamlit app:**
+   ```bash
+   streamlit run app.py
+   ```
+
+## 📊 How it Works
+The PHI logic combines three key performance indicators:
+- **CPI (Cost Performance Index):** Earned Value / Actual Cost
+- **SPI (Schedule Performance Index):** Planned Schedule / Actual Schedule
+- **Risk Assessment:** Aggregated risk scores across project stages.
+
+The tool calculates a weighted index (%) to help project managers identify potential overruns before they occur.
+
+## 📂 File Structure
+- `app.py`: The Streamlit web application.
+- `train_model.py`: Script to process data and train the neural network.
+- `phi_model.pkl`: Pre-trained MLPRegressor model.
+- `scaler_x.pkl` & `scaler_y.pkl`: Pre-fitted scalers for normalization.
+- `Engineering_Cost_Feasibility_Dataset.csv`: The base dataset for training.
+
+## 📝 Requirements
+- Python 3.8+
+- Streamlit
+- Pandas
+- Scikit-learn
+- Joblib
+- Numpy
+
+---
+Created by [Your Name]
