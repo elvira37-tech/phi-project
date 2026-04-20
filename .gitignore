@@ -9,17 +9,18 @@ env/
 venv/
 ENV/
 
-# Model Files (Optional: keep them if you want them in the repo)
-# If models are large, use Git LFS.
-# phi_model.pkl
-# scaler_x.pkl
-# scaler_y.pkl
+# Model Files (WE NEED THESE FOR STREAMLIT TO WORK)
+# Un-ignoring specifically for this project
+!*.pkl
 
 # Data Files
-Engineering_Cost_Feasibility_Dataset.csv
-Engineering_Cost_Feasibility_Dataset.xlsx
+# We ignore the large processed data, but keep the raw dataset for training
 Processed_Engineering_Data.csv
+Engineering_Cost_Feasibility_Dataset.xlsx
+
+# System files
 NTUSER.DAT*
 ntuser.dat*
 ntuser.ini
-*.pkl
+.DS_Store
+Thumbs.db
