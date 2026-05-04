@@ -1,0 +1,8 @@
+pandas
+numpy
+jax
+flax
+optax
+streamlit
+joblib
+scikit-learn
