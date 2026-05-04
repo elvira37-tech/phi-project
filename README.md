@@ -37,3 +37,9 @@ streamlit run app.py
 1. **Data Generation**: The system processes historical project data and generates synthetic samples using interpolation to increase the training set size to 21,000 samples.
 2. **Neural Network**: A multi-layer perceptron (MLP) regressor implemented in JAX/Flax is trained to predict 10 outputs (5 stage costs and 5 stage durations).
 3. **Performance Tracking**: During the 'Tracking' mode, the app calculates EVM metrics by comparing actual project progress against the AI-distributed baseline.
+
+## GitHub Actions
+This repository includes a CI workflow (`.github/workflows/ci.yml`) that automatically:
+- Installs dependencies.
+- Lints the code using `ruff`.
+- Performs syntax checks on the main scripts.
