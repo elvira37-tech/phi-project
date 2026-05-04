@@ -8,13 +8,22 @@ from flax import nnx
 import os
 
 from src.model import ConstructionNN
+from train import train_model
 
 # --- 1. Load Assets ---
-@st.cache_resource
 def load_jax_assets():
     file_path = 'jax_project_model.pkl'
     if not os.path.exists(file_path):
-        st.error("Model file not found. Please run 'python train.py' first.")
+        st.warning("\u26a0\ufe0f Model file not found. This is normal for a first-time deployment.")
+        if st.button("\ud83c\udfcb\ufe0f TRAIN AI MODEL NOW"):
+            with st.spinner("Training model on 21k samples... This takes about 30-60 seconds."):
+                try:
+                    train_model()
+                    st.success("\u2705 Training Complete! Refreshing...")
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Training failed: {e}")
+        st.info("\u2139\ufe0f Please click the button above to initialize the AI engine.")
         st.stop()
     
     assets = joblib.load(file_path)
