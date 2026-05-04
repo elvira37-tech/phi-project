@@ -51,7 +51,9 @@ est_cost_input = st.sidebar.number_input("Estimated Total Cost (USD)", value=100
 est_days_input = st.sidebar.number_input("Estimated Total Time (Days)", value=300.0)
 
 st.sidebar.header("2. Complexity & Risk")
-complexity = st.sidebar.select_slider("Complexity", options=[('Low', 1), ('Medium', 2), ('High', 3)], value=2)
+complexity_map = {'Low': 1, 'Medium': 2, 'High': 3}
+complexity_label = st.sidebar.select_slider("Complexity", options=list(complexity_map.keys()), value='Medium')
+complexity = complexity_map[complexity_label]
 risk_score = st.sidebar.slider("Initial Risk Score", 0, 100, 50)
 resource_score = st.sidebar.slider("Resource Score", 0, 100, 75)
 
