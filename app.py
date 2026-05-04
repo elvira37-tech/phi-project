@@ -14,16 +14,16 @@ from train import train_model
 def load_jax_assets():
     file_path = 'jax_project_model.pkl'
     if not os.path.exists(file_path):
-        st.warning("\u26a0\ufe0f Model file not found. This is normal for a first-time deployment.")
-        if st.button("\ud83c\udfcb\ufe0f TRAIN AI MODEL NOW"):
+        st.warning("Model file not found. This is normal for a first-time deployment.")
+        if st.button("TRAIN AI MODEL NOW"):
             with st.spinner("Training model on 21k samples... This takes about 30-60 seconds."):
                 try:
                     train_model()
-                    st.success("\u2705 Training Complete! Refreshing...")
+                    st.success("Training Complete! Refreshing...")
                     st.rerun()
                 except Exception as e:
                     st.error(f"Training failed: {e}")
-        st.info("\u2139\ufe0f Please click the button above to initialize the AI engine.")
+        st.info("Please click the button above to initialize the AI engine.")
         st.stop()
     
     assets = joblib.load(file_path)
@@ -34,7 +34,7 @@ def load_jax_assets():
 
 # --- 2. UI Setup ---
 st.set_page_config(page_title="PHI - Project Intelligence", layout="wide")
-st.title("\ud83c\udfd7\ufe0f PHI - Project Intelligence Dashboard")
+st.title("PHI - Project Intelligence Dashboard")
 
 try:
     model, assets = load_jax_assets()
@@ -59,13 +59,13 @@ mode = st.sidebar.radio("Operation Mode", ["Estimate Project", "Tracking Project
 
 # --- Tracking UI ---
 if mode == "Tracking Project":
-    st.subheader("\ud83d\udd04 Real-Time Stage Tracking")
+    st.subheader("Real-Time Stage Tracking")
     c1, c2, c3 = st.columns(3)
     with c1: curr_stage = st.selectbox("Current Stage", STAGES)
     with c2: act_cost = st.number_input("Actual Cost to Date (USD)", value=0.0)
     with c3: act_days = st.number_input("Actual Days Spent in Stage", value=0.0)
 
-if st.button("\ud83d\ude80 RUN ANALYSIS", use_container_width=True):
+if st.button("RUN ANALYSIS", use_container_width=True):
     # Prepare Input
     encoded_project_cols = [col for col in assets['param_cols'] if col.startswith('Proj_')]
     project_type_one_hot = np.zeros(len(encoded_project_cols), dtype=np.float32)
@@ -139,10 +139,11 @@ if st.button("\ud83d\ude80 RUN ANALYSIS", use_container_width=True):
         m3.metric("EAC (Forecast)", f"${eac:,.2f}")
         m4.metric("STAGE PROGRESS", f"{prog*100:.1f}%")
         
-        st.info(f"**Performance:** {'\u2705 Under Budget' if cpi >= 1 else '\ud83d\udd34 Over Budget'} | {'\u2705 Ahead' if spi >= 1 else '\ud83d\udd34 Behind Schedule'}")
+        status_msg = f"Performance: {'Under Budget' if cpi >= 1 else 'Over Budget'} | {'Ahead' if spi >= 1 else 'Behind Schedule'}"
+        st.info(status_msg)
 
     # Visual Breakdown Table
-    st.markdown("### \ud83d\udcca Stage-by-Stage Baseline Breakdown")
+    st.markdown("### Stage-by-Stage Baseline Breakdown")
     table_data = []
     for i, s in enumerate(STAGES):
         table_data.append({
