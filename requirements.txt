@@ -1,7 +1,7 @@
 pandas
 numpy
-jax
-flax
+jax[cpu]
+flax>=0.8.4
 optax
 joblib
 streamlit
