@@ -90,9 +90,16 @@ if st.button("🚀 RUN ANALYSIS", use_container_width=True):
             input_vector_dict[col] = 0.0
 
     # Set the selected project type to 1
-    selected_proj_col = f"Proj_{p_type.replace(' ', '_')}"
+    selected_proj_label = p_type.replace(' ', '_')
+    selected_proj_col = f"Proj_{selected_proj_label}"
     if selected_proj_col in input_vector_dict:
         input_vector_dict[selected_proj_col] = 1.0
+    else:
+        # Fallback in case of naming mismatch (e.g., 'Water_Infra' vs 'Water_Infrastructure')
+        for col in param_cols:
+            if col.startswith('Proj_') and selected_proj_label in col:
+                input_vector_dict[col] = 1.0
+                break
 
     # Create ordered input array
     ordered_input = np.array([input_vector_dict[col] for col in param_cols], dtype=np.float32)
