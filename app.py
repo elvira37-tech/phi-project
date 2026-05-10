@@ -30,17 +30,7 @@ def load_assets():
             
         assets = joblib.load(model_path)
         model = ConstructionNN(len(assets['param_cols']), len(assets['output_cols']), rngs=nnx.Rngs(0))
-        
-        # Determine if assets['model_state'] is a pure dict or a State object
-        state_data = assets['model_state']
-        if isinstance(state_data, dict):
-            # Convert pure dict to nnx.State
-            new_state = nnx.State.from_pure_dict(state_data)
-            nnx.update(model, new_state)
-        else:
-            # Legacy loading
-            nnx.update(model, state_data)
-            
+        nnx.update(model, assets['model_state'])
         return model, assets
     except Exception as e:
         import traceback
