@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://phi-intelligence.streamlit.app/)
+[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://phi-project-bvpv4u68spqggbfdadys35.streamlit.app/)
 
 **PHI (Project Health Intelligence)** is an advanced analytics platform designed for engineering project management. It leverages Neural Networks (built with JAX and Flax) to predict stage-by-stage costs and durations, providing project managers with data-driven insights to mitigate risks and optimize resource allocation.
 
@@ -31,8 +31,8 @@
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/gemini_project.git
-   cd gemini_project
+   git clone https://github.com/elvira37-tech/phi-project.git
+   cd phi-project
    ```
 
 2. **Set up a Virtual Environment** (Recommended):
