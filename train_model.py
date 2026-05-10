@@ -187,7 +187,7 @@ for epoch in range(10001):
         print(f"Epoch {epoch}, Loss: {loss_fn(model, X_train, Y_train):.3e}")
 
 combined_assets = {
-    'model_state': nnx.state(model, nnx.Param),
+    'model_state': jax.tree.map(np.array, nnx.state(model, nnx.Param).to_pure_dict()),
     'param_cols': param_cols,
     'output_cols': output_cols,
     'params_min': np.array(params_min),
