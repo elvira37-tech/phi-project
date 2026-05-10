@@ -27,7 +27,8 @@ share/python-wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script, and contain the exe data
+#  Usually these files are written by a python script, before pyinstaller
+#  operates on it.
 *.manifest
 *.spec
 
@@ -45,7 +46,7 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
-*.pyo
+*.py,cover
 .hypothesis/
 .pytest_cache/
 cover/
@@ -84,21 +85,23 @@ ipython_config.py
 .python-version
 
 # pipenv
-#   According to pypa/pipenv#1173, it is recommended not to include Pipfile.lock in libraries,
-#   but to include it in images and other deployed apps.
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or even
+#   fail to install them.
+#Pipfile.lock
 
 # poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in applications,
-#   but not in libraries.
-# poetry.lock
+#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
+#   poetry.lock
+#pyproject.toml
 
 # pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in applications,
-#   but not in libraries.
-# pdm.lock
+.pdm.toml
 .pdm-python
+.pdm-build/
 
-# PEP 582; used by e.g. github.com/fkrull/venvs & github.com/pdm-project/pdm
+# PEP 582; used by e.g. github.com/frenzymadness/venvexec
 __pypackages__/
 
 # Celery stuff
@@ -141,7 +144,16 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Model assets
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Project Specific
 jax_project_model.pkl
-data/Processed_Engineering_Data.csv
-data/Data_21ksamples.csv
+Data_21ksamples.csv
+Processed_Engineering_Data.csv
+*.xlsx
+*.docx
+*.pdf
