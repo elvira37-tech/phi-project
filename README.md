@@ -1,89 +1,45 @@
-# PHI - Project Intelligence Dashboard
+# Predictive Earned Value Management (EVM) Tool
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://phi-project-bvpv4u68spqggbfdadys35.streamlit.app/)
+This project provides an AI-powered tool for predicting construction project costs and timelines using JAX/Flax. It integrates traditional Earned Value Management (EVM) metrics with neural network-based forecasting to provide more accurate project outlooks.
 
-**PHI (Project Health Intelligence)** is an advanced analytics platform designed for engineering project management. It leverages Neural Networks (built with JAX and Flax) to predict stage-by-stage costs and durations, providing project managers with data-driven insights to mitigate risks and optimize resource allocation.
+## 🏗️ Features
+- **AI Forecasting:** Uses a neural network trained on historical construction data to predict costs and durations for future project stages.
+- **Interactive Dashboard:** Built with Streamlit, allowing users to input project parameters (type, area, budget) and track progress in real-time.
+- **Predictive EVM Metrics:** Calculates CPI (Cost Performance Index), SPI (Schedule Performance Index), and EAC (Estimate at Completion) based on both actual progress and AI predictions.
+- **Visual S-Curves:** Interactive Plotly charts comparing the baseline plan, actual performance, and AI-driven forecasts.
 
-## 🚀 Key Features
+## 🚀 Getting Started
 
-- **AI-Driven Estimation**: Predict baseline costs and durations for 5 critical construction stages:
-  - Site Preparation
-  - Foundations
-  - Structural Works
-  - Systems Installation
-  - Finishing Works
-- **Hybrid Tracking System**: Seamlessly combine manual user estimates with AI-driven stage distributions for enhanced accuracy.
-- **Dynamic EVM Dashboard**: Real-time monitoring of Cost Performance Index (CPI), Schedule Performance Index (SPI), and Estimate at Completion (EAC).
-- **Multi-Sector Support**: Pre-configured for Building, Bridge, Power Plant, Water Infrastructure, and Road projects.
-- **Risk Assessment**: Integrated complexity and risk scoring to adjust project forecasts.
+### Prerequisites
+- Python 3.9+
+- Pip
 
-## 🛠️ Tech Stack
-
-- **Machine Learning**: JAX, Flax, Optax (Neural Network architecture)
-- **Data Processing**: Pandas, NumPy
-- **Dashboard**: Streamlit
-- **Serialization**: Joblib
-- **Visualization**: Matplotlib
-
-## 📦 Installation
-
-1. **Clone the Repository**:
+### Installation
+1. Clone the repository:
    ```bash
-   git clone https://github.com/elvira37-tech/phi-project.git
+   git clone https://github.com/your-username/phi-project.git
    cd phi-project
    ```
-
-2. **Set up a Virtual Environment** (Recommended):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install Dependencies**:
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-## 🏃 Getting Started
-
-### 1. Training the Model
-Before running the dashboard, you must generate the model assets by training the neural network on the provided dataset.
-
-```bash
-python train_model.py
-```
-This will process `Engineering_Cost_Feasibility_Dataset.csv` and generate `jax_project_model.pkl`.
-
-### 2. Launching the Dashboard
-Start the Streamlit application:
-
+### Running the Tool
+To launch the interactive dashboard:
 ```bash
 streamlit run app.py
 ```
 
 ## 📂 Project Structure
+- `app.py`: The main Streamlit application for the interactive dashboard.
+- `pm_project.py`: The training and data generation script (originally developed in Google Colab).
+- `project_model.pkl`: Pre-trained model weights and preprocessing assets.
+- `*.csv`: Datasets used for training and validation.
+- `validation_results.npz`: Detailed metrics from the model evaluation.
 
-- `app.py`: Main Streamlit application and UI logic.
-- `train_model.py`: Data synthesis, preprocessing, and JAX/Flax model training.
-- `Engineering_Cost_Feasibility_Dataset.csv`: Raw dataset containing historical project metrics.
-- `PM_project.ipynb`: Research and development notebook for the PHI algorithm.
-- `requirements.txt`: List of required Python packages.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 🧠 Model Architecture
+The tool uses a multi-layer perceptron (MLP) built with **JAX** and **Flax NNX**. It processes categorical project types, complexity levels, and numerical scope parameters to forecast stage-by-stage actuals.
 
 ## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-*Built for the future of Engineering Project Management.*
+This project is licensed under the MIT License - see the LICENSE file for details.
